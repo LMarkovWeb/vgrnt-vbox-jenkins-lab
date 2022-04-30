@@ -24,18 +24,12 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", path: "bootstrap.sh"
   end
 
-  # # minikube
-  # config.vm.define "minikube" do |config|
-  #   config.vm.box = 'centos/7'
-  #   config.vm.hostname = 'minikube.loc'
-  #   config.vm.network "private_network", ip: "192.168.20.211"
-  # end
-  
   # minikube
   config.vm.define "minikube" do |config|
-    config.vm.box = 'peru/ubuntu-18.04-desktop-amd64'
+    config.vm.box = 'generic/ubuntu1804'
     config.vm.hostname = 'minikube.loc'
     config.vm.network "private_network", ip: "192.168.20.211"
+    config.vm.provision "shell", path: "install-minikube.sh"
   end
 
 end
